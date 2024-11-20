@@ -1,8 +1,56 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: demo-plugin-component
+  name: personal-github-account
+  appid: personal-github-account
+  description: Catalog From My Personal GitHub Account
+  annotations:
+    # github.com/project-slug: backstage/backstage
+    backstage.io/techdocs-ref: dir:.
+    # For GitHub plugin
+    flowsource/github-repo-owner: salarsiddharth
+    flowsource/github-repo-name: demo-plugin-fe
+    # For JIRA plugin
+    flowsource/jira-project-key: VPM
+    # flowsource/jira-project-key: CQS
+    flowsource/durationInDays: "120"
+    # For Bitbucket plugin
+    # flowsource/bitbucket-repo-owner: ST_DPD
+    # flowsource/bitbucket-repo-name: satelliteorderms
+    # For Jenkins plugin
+    flowsource/jenkins-pipelines: DCP/job/st_dpd.dpd/job/SatelliteOrderMs-v1
+    # For DORA
+    flowsource/dora-cicd-tool: jenkins
+    flowsource/dora-scm-tool: github
+    flowsource/dora-alm-tool: jira
+    flowsource/dora-itsm-tool: service-now
+    flowsource/dora-observability-platform: dynatrace
+    flowsource/dora-jira-final-status: Accepted
+    flowsource/jenkins-prod-deployment-job-full-project-name: DCP/st_dpd.dpd/SatelliteOrderMs-v1/master
+    # For CodeQuality Plugin
+    flowsource/sonarqube-project-key: 32151:com-dtv-dcp-dpd:StreamAccountMs
+    flowsource/servicenow-configuration-item: ''
+    flowsource/veracode-app-name: 32217-DTV-DTVS-BeamAcctBillingMs
+    flowsource/dynatrace-clusterName: aws-32151-vpm-eks-uswest2-dev1aw
+    flowsource/dynatrace-deploymentName: paymentms-blue-*
+ 
 spec:
-  lifecycle: production
-  owner: my-team
-  type: service
+  type: service # website or service
+  lifecycle: experimental
+  owner: role:catalog-user
+  providesApis:
+    - demo-plugin-fe-apis
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: demo-plugin-fe-apis
+  description: The API provided by the demo-plugin-fe
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: role:catalog-user
+  definition:
+    $text: ./swagger.json
