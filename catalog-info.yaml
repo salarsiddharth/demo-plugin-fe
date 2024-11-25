@@ -28,7 +28,7 @@ metadata:
     flowsource/dora-jira-final-status: Accepted
     flowsource/jenkins-prod-deployment-job-full-project-name: DCP/st_dpd.dpd/SatelliteOrderMs-v1/master
     # For CodeQuality Plugin
-    flowsource/sonarqube-project-key: 32151:com-dtv-dcp-dpd:StreamAccountMs
+    flowsource/sonarqube-project-key: 32504:com.att.idp.video:stms-partner-portal-ui-v1
     flowsource/servicenow-configuration-item: ''
     flowsource/veracode-app-name: 32217-DTV-DTVS-BeamAcctBillingMs
     flowsource/dynatrace-clusterName: aws-32151-vpm-eks-uswest2-dev1aw
